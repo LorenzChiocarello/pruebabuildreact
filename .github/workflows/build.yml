@@ -1,30 +1,30 @@
-name: Build and Deploy React App
+name: Build React App
 
 on:
   push:
-    branches: [ "main" ]  # Se ejecuta cuando haces push a 'main'
+    branches: [ "main" ]
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Usa una máquina virtual Ubuntu
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4  # Descarga el código del repo
+        uses: actions/checkout@v4  # Versión actualizada
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'  # Usa Node.js 20 (o la versión que necesites)
+          node-version: '20'
 
       - name: Install dependencies
-        run: npm install  # Instala las dependencias
+        run: npm install
 
       - name: Build React App
-        run: npm run build  # Ejecuta el build de React
+        run: npm run build
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # ¡Versión corregida!
         with:
-          name: build
-          path: build/  # Guarda la carpeta 'build' como artefacto
+          name: react-build
+          path: build/
